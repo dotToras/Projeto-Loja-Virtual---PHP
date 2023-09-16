@@ -2,7 +2,7 @@
 
 $servidor="localhost";
 $usuario="root";
-$senha="rukiaç8adgW";
+$senha="123456";
 $banco="dbBlade";
 $comando=new PDO("mysql:host=$servidor;dbname=$banco;",$usuario,$senha);
 
