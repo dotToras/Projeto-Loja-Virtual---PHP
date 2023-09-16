@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+ 
+.navbar{
+    margin-bottom: 0;
+}
+.img-responsive{
+    width: 100%;
+  
+}
+
+#container{
+    font-family: 'Uncial Antiqua', sans-serif  !important;
+    font-size: 1vw !important;
+    
+    
+}
+
+#prodDiv {
+    
+    margin-top: 1vw;
+    gap:1vw;
+    height: 52vw;
+}
