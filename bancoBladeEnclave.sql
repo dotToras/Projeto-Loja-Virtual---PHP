@@ -168,3 +168,54 @@ begin
 	select  nmProd,vlProd,ImgProd, qtEstoque from vwProdDetalhes where dsCategoria = vdsCategoria;
  
  end &&
+ 
+ -- Criando tabela de usuário
+ 
+ create table tbUsuario(
+ 
+ cdUsuario int primary key auto_increment,
+ nmUsuario varchar(80) not null,
+ dsEmail varchar(80) not null,
+ dsSenha varchar(6) not null,
+ dsStatus boolean not null,
+ dsEndereco varchar(80) not null,
+ dsCidade varchar(30)  not null,
+ noCep char(9) not null
+
+ ) default charset utf8;
+
+ -- inserindo usuario
+ insert into tbUsuario()
+ values(default,"Xibison", "xibison@gmail.com", "123", 1,"R. das Gaivotas", "Rio Branco, AC", "35637-909");
+ 
+  insert into tbUsuario()
+ values(default,"Joabcledson", "Joabcledson@gmail.com", "123", 0,"R. Anapa", "Xique Xique, BA", "56890-321");
+ 
+ -- criando procedure para verificar Usuario
+ 
+ delimiter %%
+ 
+ create procedure spVerificaUsuario(VdsEmail varchar(80), VdsSenha varchar(6) )
+ 
+ begin
+ 
+  select cdUsuario, nmUsuario, dsEmail, dsSenha, dsStatus from tbUsuario
+  where dsEmail = VdsEmail and dsSenha = VdsSenha;
+ 
+ end %%
+ 
+ delimiter ;
+ 
+ -- procedure para mostrar Usuario logado
+ 
+ delimiter **
+ 
+ create procedure spMostraUsuario(vCodUsu int)
+ 
+ begin
+ 
+ select nmUsuario from tbUsuario where cdUsuario = vCodUsu;
+
+ end **
+ 
+ delimiter ;
