@@ -1,4 +1,8 @@
     
+<?php
+include 'conexao.php';
+?>
+
 <nav class="navbar navbar-inverse ">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +27,7 @@
             <li><a href="categoria.php?cat=Espadas Longas">Espadas Longas</a></li>
             <li><a href="categoria.php?cat=Adagas">Adagas</a></li>
             <li><a href="categoria.php?cat=Jian">Jian</a></li>
-         
+            <li><a href="categoria.php?cat=Lanças">Lanças</a></li>
         
           </ul>
         </li>
@@ -36,8 +40,22 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Contato</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
-           
+
+        <?php if(empty($_SESSION['ID'])) { ?>
+
+        <li><a href="formlogon.php"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
+        <?php  }
+         else
+        {
+          $consultaUsuario = $comando->prepare("call spMostraUsuario('$_SESSION[ID]')");
+          $consultaUsuario->execute();
+          $exibeUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
+         ?>
+    <li><a href="#"><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
+
+
+    <li><a href="sair.php">Sair</a></li>
+        <?php }?>
           </ul>
         </li>
       </ul>
