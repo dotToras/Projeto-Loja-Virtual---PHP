@@ -18,8 +18,23 @@ if($consulta->rowCount() == 1)
 {
 
   $exibeUsuario = $consulta->fetch(PDO::FETCH_ASSOC);
+
+  if($exibeUsuario['dsStatus'] == 0)
+  {
+
+  
     $_SESSION['ID'] = $exibeUsuario['cdUsuario'];
+    $_SESSION['Status'] = 0;
     header('location:index.php');
+  }
+ else
+ {
+
+  $_SESSION['ID'] = $exibeUsuario['cdUsuario'];
+    $_SESSION['Status'] = 1;
+    header('location:index.php');
+
+ }
 
 }
 else

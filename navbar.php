@@ -41,12 +41,16 @@ include 'conexao.php';
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Contato</a></li>
 
-        <?php if(empty($_SESSION['ID'])) { ?>
+        <?php 
+        if(empty($_SESSION['ID'])) { ?>
 
         <li><a href="formlogon.php"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
         <?php  }
          else
         {
+
+          if($_SESSION['Status'] == 0)
+          {
           $consultaUsuario = $comando->prepare("call spMostraUsuario('$_SESSION[ID]')");
           $consultaUsuario->execute();
           $exibeUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
@@ -55,6 +59,15 @@ include 'conexao.php';
 
 
     <li><a href="sair.php">Sair</a></li>
+        <?php }
+         else
+          {
+        ?>
+        <li><a href="adm.php"><button class="btn btn-sm btn-danger">Administrador</button></a></li>
+
+
+        <li><a href="sair.php">Sair</a></li>
+        <?php }?>
         <?php }?>
           </ul>
         </li>
