@@ -219,3 +219,31 @@ begin
  end **
  
  delimiter ;
+ 
+ -- procedure para verificar se o Email já está cadastrado
+ 
+ delimiter %% 
+
+ create procedure spVerificaEmail(VdsEmail varchar(80))
+
+ begin
+ 
+ select dsEmail from tbUsuario where dsEmail = VdsEmail;
+ 
+ end %%
+ 
+ delimiter ; 
+ 
+ -- criando procedure para inserir novo Usuário
+ 
+ delimiter $$
+
+ create procedure spInserirUsuario(vnmUsuario varchar(80), vdsEmail varchar(80), vdsSenha varchar(6),  vdsStatus boolean, vdsEndereco varchar(80),  vdsCidade varchar(30), vnoCep char(9)  )
+ 
+ begin
+ 
+ insert into tbUsuario()
+ values(default, vnmUsuario, vdsEmail, vdsSenha,vdsStatus,vdsEndereco, vdsCidade, vnoCep );
+
+ end $$
+ delimiter ;
