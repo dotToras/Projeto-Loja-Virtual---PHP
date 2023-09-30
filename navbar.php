@@ -1,5 +1,6 @@
-    
+
 <?php
+
 include 'conexao.php';
 ?>
 
@@ -32,9 +33,9 @@ include 'conexao.php';
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" name="frmPesquisa" method="post" action="busca.php">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Busque o que deseja...">
+          <input type="text" class="form-control" placeholder="Busque o que deseja..." name="txtBuscar">
         </div>
         <button type="submit" class="btn btn-default">Pesquisar</button>
       </form>
@@ -75,3 +76,4 @@ include 'conexao.php';
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+

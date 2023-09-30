@@ -56,7 +56,7 @@
                     <div id="botoesProd" class="text-center  ">
 
                     <button class="btn btn-lg btn-block btn-info ">
-                        <span class="glyphicon glyphicon-usd"> DETALHES</span>
+                        <a href="detalhes.php?cd=<?php echo $exibe["cdProd"]; ?>"><span class="glyphicon glyphicon-usd"> DETALHES</span></a>
                         </button>
 
 
