@@ -87,7 +87,7 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1 product-image">
                 <h1 class="product-title">Detalhes do Produto</h1>
-                <img src="Imagens/<?php echo $exibir['ImgProd'] ?>.jpg" class="img-responsive" style="width:100%;">
+                <img src="Imagens/<?php echo $exibir['ImgProd'] ?>" class="img-responsive" style="width:100%;">
             </div>
             <div class="col-sm-7">
                 <h1 class="product-title"><?php echo $exibir['nmProd'] ?></h1>

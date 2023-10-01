@@ -62,7 +62,7 @@
 	
 	<div class="row" style="margin-top: 15px;">
 		
-		<div class="col-sm-1 col-sm-offset-1"><img src="Imagens/<?php echo $exibir['ImgProd'] ?>.jpg" class="img-responsive"></div>
+		<div class="col-sm-1 col-sm-offset-1"><img src="Imagens/<?php echo $exibir['ImgProd'] ?>" class="img-responsive"></div>
 		<div class="col-sm-5"><h4 style="padding-top:20px"><?php echo $exibir['nmProd'] ?></h4></div>
 		<div class="col-sm-2"><h4 style="padding-top:20px">R$ <?php echo $exibir['vlProd'] ?></h4></div>
 		<div class="col-sm-2 col-xs-offset-right-1">

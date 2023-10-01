@@ -46,7 +46,7 @@
 
               <div class="col-sm-4">
 
-                    <img src="Imagens/<?php  echo $exibe['ImgProd']?>.jpg" class="img-responsive">
+                    <img src="Imagens/<?php  echo $exibe['ImgProd']?>" class="img-responsive">
                     <div><h1><?php  echo mb_strimwidth( $exibe['nmProd'],0,30,'...' ); ?></h1></div> <!-- Utilizndo mb_strimwidth para limitar o númer de caracteres -->
                   <hr>
                     <div><h4>R$<?php  echo number_format($exibe['vlProd'] ,2,',','.'); ?></h4></div> <!-- Utilizando number-format para formatar o valor recebido no formato numérico -->
