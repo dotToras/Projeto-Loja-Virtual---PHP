@@ -158,7 +158,7 @@ begin
  
  begin 
 	
-    select nmProd,vlProd,ImgProd, qtEstoque from tbProdutos 
+    select cdProd, nmProd,vlProd,ImgProd, qtEstoque from tbProdutos 
     where sgLancamento = 'S';
  
  end $$
@@ -351,4 +351,32 @@ begin
  
  delimiter ; 
  
+ -- criando tabela de Vendas
  
+ create table tbVendas(
+ 
+ cdVenda int(11) primary key auto_increment,
+ noTicket varchar(13) not null,
+ cdCliente int(11) not null, 
+ cdProd int(11) not null,
+ qtProd int(11) not null,
+ vlItem decimal(10,2) not null,
+ vlTotal decimal (10,2) generated always as ((qtProd * vlItem)) virtual,
+ dt_venda date not null
+ )default charset=utf8;
+ 
+ -- criando procedure para inserir na tabela de Vendas
+ 
+ delimiter $$
+
+ create procedure spInserirVenda(VnoTicket varchar(13), VcdCliente int(11),VcdProd int(11),
+                                VqtProd int(11), VvlItem decimal(10,2), Vdt_venda date )
+ 
+ begin
+ 
+ INSERT INTO tbVendas (noTicket, cdCliente, cdProd, qtProd, vlItem, dt_venda)
+VALUES (VnoTicket, VcdCliente, VcdProd, VqtProd, VvlItem, Vdt_venda);
+
+ end $$
+ 
+ delimiter ;
