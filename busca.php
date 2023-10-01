@@ -47,7 +47,8 @@
 	$pesquisa = $_POST["txtBuscar"];
 
     $consulta = $comando->prepare("call spListaBuscado('$pesquisa')");
-    $consulta->execute();
+	$consulta->closeCursor();
+    $consulta->execute(); 
     if($consulta->rowCount() == 0)
    {
 
@@ -83,6 +84,7 @@
 
 <?php
 }	?>
+
 
 	<?php
 	

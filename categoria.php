@@ -61,7 +61,8 @@
                     <?php if($exibe['qtEstoque'] > 0){?> <!-- If para verificar se existe quantidade de estoque e então exibir botão de compra -->
 
                         <button class="btn btn-lg btn-block btn-success">
-                          <span class="glyphicon glyphicon-info-sign">  COMPRAR</span>
+                        <a href="carrinho.php?cd=<?php echo $exibe["cdProd"]; ?>">
+                          <span class="glyphicon glyphicon-info-sign">  COMPRAR</span></a>
                         </button>
 
                         <?php  } else{?> <!-- Se não, exibir botão de indisponivel -->
