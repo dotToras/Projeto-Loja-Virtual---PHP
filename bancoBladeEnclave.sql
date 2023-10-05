@@ -210,20 +210,48 @@ begin
  
  delimiter ;
  
+ -- procedure para listar usuario por cod
+ 
+ delimiter $$
+ 
+ create procedure spListarUsuario(vCodUsu int)
+ 
+ begin
+ 
+ select * from tbUsuario where cdUsuario = vCodUsu;
+ 
+ end $$
+ 
+ delimiter ;
  -- procedure para mostrar Usuario logado
  
  delimiter **
  
  create procedure spMostraUsuario(vCodUsu int)
- 
+
  begin
  
- select nmUsuario from tbUsuario where cdUsuario = vCodUsu;
+ select nmUsuario, imgUsuario from tbUsuario where cdUsuario = vCodUsu;
 
  end **
  
  delimiter ;
  
+ -- criando procedure para Atualizar usuário
+ delimiter $$
+
+create procedure spAtualizarUsuario(_nmUsuario varchar(80), _dsEmail varchar(80), _dsEndereco varchar(80),
+                                    _dsCidade varchar(30), _noCep char(9), _img varchar(255), _cd int)
+
+begin
+
+update tbUsuario set nmUsuario = _nmUsuario, dsEmail = _dsEmail, dsEndereco = _dsEndereco, 
+dsCidade = _dsCidade, noCep =  _noCep, imgUsuario = _img
+ where cdUsuario = _cd;
+
+end $$
+
+delimiter;
  -- procedure para verificar se o Email já está cadastrado
  
  delimiter %% 
