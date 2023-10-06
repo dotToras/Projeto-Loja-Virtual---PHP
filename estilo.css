@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
- 
-.navbar{
-    margin-top: 0;
-}
-.img-responsive{
-    width: 100%;
-  
+
+
+.profile-avatar {
+    width: 30vw; /* Adjust the size as needed */
+    height: 30vw; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it circular */
+    border: 0.1vw solid #2b1111; /* Add a white border for a clean look */
+    display: block; /* Center horizontally */
+    margin: 0 auto; /* Center horizontally */
 }
 
 *{
@@ -14,14 +16,4 @@
     
     
     
-}
-
-#prodDiv {
-    
-    margin-top: 1vw;
-    gap:1vw;
-    height: 52vw;
-}
-.jumbotron{
-    margin-top:-1.5vw;
 }

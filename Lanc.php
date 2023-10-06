@@ -23,6 +23,7 @@
 <body>
 
           <?php
+    session_start();
 
           //Includes
 

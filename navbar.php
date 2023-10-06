@@ -57,7 +57,11 @@ include 'conexao.php';
           $consultaUsuario->execute();
           $exibeUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
          ?>
-    <li><a href="#"><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
+
+    <?php if($exibeUsuario['imgUsuario'] != null) {?>
+    <li> <img class="mt-6"style="border-radius:50%; margin-top:0.2vw;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
+    <?php } ?>
+    <li><a href="editarUsuario.php?cd='<?php echo $_SESSION['ID'] ?> "><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
 
 
     <li><a href="sair.php">Sair</a></li>

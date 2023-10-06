@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css" />
+
 <?php
 // iniciando a sessão, pois precisamos pegar o cd do usuario logado para salvar na tabela de vendas no campo cd_cliiente
 session_start();  
