@@ -274,8 +274,8 @@ delimiter;
  
  begin
  
- insert into tbUsuario()
- values(default, vnmUsuario, vdsEmail, vdsSenha,vdsStatus,vdsEndereco, vdsCidade, vnoCep );
+ insert into tbUsuario(nmUsuario,dsEmail,dsSenha,dsStatus,dsEndereco,dsCidade, noCep )
+ values( vnmUsuario, vdsEmail, vdsSenha,vdsStatus,vdsEndereco, vdsCidade, vnoCep );
 
  end $$
  delimiter ;
@@ -408,3 +408,39 @@ VALUES (VnoTicket, VcdCliente, VcdProd, VqtProd, VvlItem, Vdt_venda);
  end $$
  
  delimiter ;
+ 
+ -- criando view para selecionar as vendas feitas pelo Usuário 
+ create view vwVenda
+ as select noTicket, qtProd, vlTotal, dt_venda, nmProd, cdCliente from tbVendas as TV
+ Inner join TbProdutos as TP
+ On TP.cdProd = TV.cdProd ;
+ 
+ -- criando procedure para selecionar os tickets das vendas dos usuário
+delimiter $$
+
+create procedure spListaVendas(vCod int) 
+
+begin
+
+SELECT noTicket, MAX(dt_venda) AS max_dt_venda
+FROM TbVendas
+WHERE cdCliente = vCod
+GROUP BY noTicket;
+ 
+ end $$
+ 
+ delimiter ;
+ 
+ -- criando procedure para listar as vendas feitas pelos usuários
+ 
+ delimiter $$
+ 
+ create procedure spListarVendasUsu(vTicket varchar(13))
+ 
+ begin
+ 
+ select * from vwVenda where noTicket = vTicket;
+ 
+ end $$
+ 
+  delimiter ;
