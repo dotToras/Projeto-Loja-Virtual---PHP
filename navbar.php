@@ -41,8 +41,9 @@ include 'conexao.php';
       </form>
       <ul class="nav navbar-nav navbar-right">
       <li><a href="carrinho.php">Carrinho</a></li>
-        <li><a href="#">Contato</a></li>
 
+      
+     
         <?php 
         if(empty($_SESSION['ID'])) { ?>
 
@@ -57,9 +58,9 @@ include 'conexao.php';
           $consultaUsuario->execute();
           $exibeUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
          ?>
-
+  <li><a href="areaUser.php">Minhas Compras</a></li>
     <?php if($exibeUsuario['imgUsuario'] != null) {?>
-    <li> <img class="mt-6"style="border-radius:50%; margin-top:0.2vw;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
+    <li><img class="mt-6"style="border-radius:50%; margin-top:0.2vw;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
     <?php } ?>
     <li><a href="editarUsuario.php?cd='<?php echo $_SESSION['ID'] ?> "><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
 
@@ -69,7 +70,7 @@ include 'conexao.php';
          else
           {
         ?>
-        <li><a href="adm.php"><button class="btn btn-sm btn-danger">Administrador</button></a></li>
+        <li><a href="adm.php"><button class="btn btn-sm btn-danger" style="margin-top:-0.3vw;">Administrador</button></a></li>
 
 
         <li><a href="sair.php">Sair</a></li>

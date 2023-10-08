@@ -23,7 +23,7 @@
 <body>
 
           <?php
-
+         session_start();	
           //Includes
 
              include "navbar.php";

@@ -29,7 +29,7 @@
           //Includes
 
              include "navbar.php";
-             include "cabecalho.html";
+             include "Carrossel.php";
              include 'conexao.php';
 
              //chamando a procudure
@@ -37,53 +37,51 @@
              $consulta->execute();  //executando a procedure
           ?>
 
-          <div id="container" class="container-fluid">
+<div class="container-fluid d-flex align-items-center">
 
-              <div class="row text-center centered div">
+<div class="row text-center centered div">
 
-              <!-- Laço de repetição para exibir todos os produtos cadastrados -->
+<!-- Laço de repetição para exibir todos os produtos cadastrados -->
 
-              <?php   while ($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) {  ?>
+<?php   while ($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) {  ?>
+
+<div class="col-sm-4 centered centered-content">
+
+      <img src="Imagens/<?php  echo $exibe['ImgProd']?>" class="img-responsive">
+      <div><h1><?php  echo mb_strimwidth( $exibe['nmProd'],0,30,'...' ); ?></h1></div> <!-- Utilizndo mb_strimwidth para limitar o númer de caracteres -->
+    <hr>
+      <div><h4>R$<?php  echo number_format($exibe['vlProd'] ,2,',','.'); ?></h4></div> <!-- Utilizando number-format para formatar o valor recebido no formato numérico -->
+
+      <div class="text-center">
+
+      <button class="btn btn-lg btn-block btn-info">
+      <a href="detalhes.php?cd=<?php echo $exibe["cdProd"]; ?>">
+          <span class="glyphicon glyphicon-usd"> DETALHES</span></a>
+          </button>
 
 
-              <div id="prodDiv" class="col-sm-4 mt-5  " >
+      <?php if($exibe['qtEstoque'] > 0){?> <!-- If para verificar se existe quantidade de estoque e então exibir botão de compra -->
 
-                    <img src="Imagens/<?php  echo $exibe['ImgProd']?>" class="img-responsive">
-                    <div><h1><?php  echo mb_strimwidth( $exibe['nmProd'],0,18,'...' ); ?></h1></div> <!-- Utilizndo mb_strimwidth para limitar o númer de caracteres -->
-                  <hr class="divisoria">
-                    <div><h4>R$ <?php  echo number_format($exibe['vlProd'] ,2,',','.'); ?></h4></div> <!-- Utilizando number-format para formatar o valor recebido no formato numérico -->
-                    <hr>
-                    <div id="botoesProd" class="text-center  ">
+          <button class="btn btn-lg btn-block btn-success">
+          <a href="carrinho.php?cd=<?php echo $exibe["cdProd"]; ?>">
+            <span class="glyphicon glyphicon-info-sign">  COMPRAR</span></a>
+          </button>
 
-                    
-                    <button class="btn btn-lg btn-block btn-info ">
-                        <a href="detalhes.php?cd=<?php echo $exibe["cdProd"]; ?>"><span class="glyphicon glyphicon-usd"> DETALHES</span></a>
-                        </button>
+          <?php  } else{?> <!-- Se não, exibir botão de indisponivel -->
 
+          <button class="btn btn-lg btn-block btn-danger">
+          <span class="glyphicon glyphicon-remove-circle"> INDISPONIVEL</span>
+          </button>
 
-                    <?php if($exibe['qtEstoque'] > 0){?> <!-- If para verificar se existe quantidade de estoque e então exibir botão de compra -->
+          <?php   }  ?>
+      </div>
+  </div>
 
-                        <button class="btn btn-lg btn-block btn-success">
-                        <a href="carrinho.php?cd=<?php echo $exibe["cdProd"]; ?>">
-                          <span class="glyphicon glyphicon-info-sign">  COMPRAR</span>
-                          </a>
-                        </button>
+  <?php }  ?>
 
-                        <?php  } else{?> <!-- Se não, exibir botão de indisponivel -->
+</div><!--fechamento da classe rw-->
 
-                        <button class="btn btn-lg btn-block btn-danger ">
-                        <span class="glyphicon glyphicon-remove-circle"> INDISPONIVEL</span>
-                        </button>
-
-                        <?php   }  ?>
-                    </div>
-                </div>
-
-                <?php }  ?>
-
-              </div><!--fechamento da classe rw-->
-
-          </div><!--fechamento da classe conteiner fluid-->
+</div><!--fechamento da classe conteiner fluid-->
 
           <?php include "rodape.html";   ?>
 

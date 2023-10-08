@@ -12,10 +12,7 @@
         .navbar {
             margin-bottom: 0;
         }
-        /* Container styles */
-        .container-fluid {
-            padding: 20px;
-        }
+        
         /* Product image styles */
         .product-image {
            
@@ -63,12 +60,13 @@
     <?php
     session_start();
     include 'conexao.php';    
-      
+    include 'navbar.php';
     ?>
     <?php
     if(!empty($_GET['cd'])){
     $cdProd = $_GET['cd'];
     $consulta = $comando->prepare("call listarProdutosDetalhes('$cdProd')");
+    $consulta->closeCursor();
     $consulta->execute();
     $exibir = $consulta->fetch(PDO::FETCH_ASSOC);
     }
@@ -78,10 +76,7 @@
     }
     ?>
 
-    <?php
-    include 'navbar.php';
-    ?>
-    
+   
     <body>
     <div class="container-fluid">
         <div class="row">
@@ -94,7 +89,9 @@
                 <p class="product-description"><?php echo $exibir['ResumoProd'] ?></p>
                 <p class="product-category"><?php echo $exibir['dsCategoria'] ?></p>
                 <p class="product-price">R$ <?php echo $exibir['vlProd'] ?></p>
+                <a href="carrinho.php?cd=<?php echo $cdProd; ?>">
                 <button class="btn btn-lg buy-button">Comprar</button>
+                </a>
             </div>
         </div>
     </div>
