@@ -51,7 +51,7 @@
       <div><h1><?php  echo mb_strimwidth( $exibe['nmProd'],0,30,'...' ); ?></h1></div> <!-- Utilizndo mb_strimwidth para limitar o númer de caracteres -->
     <hr>
       <div><h4>R$<?php  echo number_format($exibe['vlProd'] ,2,',','.'); ?></h4></div> <!-- Utilizando number-format para formatar o valor recebido no formato numérico -->
-
+      <hr>
       <div class="text-center">
 
       <button class="btn btn-lg btn-block btn-info">

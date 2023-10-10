@@ -19,7 +19,7 @@
         .row-header {
             margin-top: 15px;
             font-weight: bold;
-            background-color: #337ab7;
+            background-color: #8B0000;
             color: #fff;
             padding: 10px;
         }

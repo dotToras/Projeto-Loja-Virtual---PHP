@@ -1,10 +1,33 @@
+<style>
+/* Adicionar sombra à navbar */
+.navbar-custom {
+    background-color: #8B0000; /* Vermelho vinho */
+    box-shadow: 0 0.3vw #550000; /* Sombra escura abaixo da navbar */
+    border-radius: 0;
+}
+
+/* Define a cor do texto da navbar para preto */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav > li > a {
+    color: #000; /* Fonte preta */
+}
+
+/* Define a cor das barras do botão de navegação quando em modo de colapso */
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+.navbar-custom .dropdown-menu {
+    z-index: 1000;
+}
+
+</style>
 
 <?php
 
 include 'conexao.php';
 ?>
 
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar-custom navbar-inverse ">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,7 +51,7 @@ include 'conexao.php';
             <li><a href="categoria.php?cat=Espadas Longas">Espadas Longas</a></li>
             <li><a href="categoria.php?cat=Adagas">Adagas</a></li>
             <li><a href="categoria.php?cat=Jian">Jian</a></li>
-            <li><a href="categoria.php?cat=Lanças">Lanças</a></li>
+            
         
           </ul>
         </li>
@@ -60,7 +83,7 @@ include 'conexao.php';
          ?>
   <li><a href="areaUser.php">Minhas Compras</a></li>
     <?php if($exibeUsuario['imgUsuario'] != null) {?>
-    <li><img class="mt-6"style="border-radius:50%; margin-top:0.2vw;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
+    <li><img class="mt-6"style="border-radius:50%; margin-top:0.2vw;border:0.1vw solid black;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
     <?php } ?>
     <li><a href="editarUsuario.php?cd='<?php echo $_SESSION['ID'] ?> "><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
 

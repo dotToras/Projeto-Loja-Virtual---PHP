@@ -28,7 +28,7 @@
           //Includes
 
              include "navbar.php";
-             include "cabecalho.html";
+             include "Carrossel.php";
              include 'conexao.php';
 
              //chamando a procudure

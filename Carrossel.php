@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carrossel Bootstrap 3.3.7</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
+<style>
+/* Defina o tamanho do carrossel para ocupar toda a largura da tela */
+#myCarousel {
+  z-index: 900;
+    margin-top:-1.2vw;
+    width: 100%;
+    height: auto; /* Use "auto" para manter a proporção da imagem original */
+    max-width: none; /* Remova a largura máxima para ocupar a largura completa */
+}
+#myCarousel .carousel-inner {
+    height: 40vw; /* Defina a altura fixa desejada em pixels */
+}
+/* Defina o tamanho das imagens dentro do carrossel */
+.carousel-inner img {
+    width: 100%;
+    height: auto; /* Use "auto" para manter a proporção da imagem original */
+    object-fit: fill;/* Isso garante que a imagem cubra todo o espaço disponível */
+}
 
+
+</style>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicadores do Carrossel -->
   <ol class="carousel-indicators">
@@ -19,13 +30,13 @@
   <!-- Slides do Carrossel -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="" alt="Primeiro Slide">
+      <img src="Banners/Taiji Banner.png" alt="Primeiro Slide">
     </div>
     <div class="item">
-      <img src="" alt="Segundo Slide">
+      <img src="Banners/Roma Banner.png" alt="Segundo Slide">
     </div>
     <div class="item">
-      <img src="" alt="Terceiro Slide">
+      <img src="Banners/Claymore Banner.png" alt="Terceiro Slide">
     </div>
   </div>
 
@@ -40,10 +51,4 @@
   </a>
 </div>
 
-<!-- Scripts JavaScript do Bootstrap 3.3.7 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-</body>
-</html>
 
