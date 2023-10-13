@@ -1,12 +1,13 @@
-a {
+#linkFooter{
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
-    color: #000; /* Alterado para preto */
+    color: #c6c6c695; /* Alterado para preto */
 }
 
-a, a:hover {
+#linkFooter, #linkFooter:hover {
     text-decoration: none !important;
+    
 }
 
 .content {
@@ -22,7 +23,7 @@ a, a:hover {
 
 .footer-48201 .footer-site-logo {
     font-size: 1.5rem;
-    color: #000; /* Alterado para preto */
+    color: #d7d5d5; /* Alterado para preto */
 }
 
 .footer-48201 .nav-links li {

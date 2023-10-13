@@ -36,7 +36,7 @@
     session_start();
     include 'conexao.php';
     include 'navbar.php';
-    include "Carrossel.php";
+   
     ?>
     <div class="container-fluid">
 

@@ -48,6 +48,12 @@
         .glyphicon {
             margin-right: 5px;
         }
+        #LinkTicket{
+            color:black;
+        }
+        #LinkTicket:hover{
+            color:grey;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +89,7 @@ $consultaVenda->execute();
         <?php while ($exibir = $consultaVenda->fetch(PDO::FETCH_ASSOC)) { ?>
             <div class="row row-data">
                 <div class="col-sm-2"><?php echo date('d/m/Y',strtotime($exibir["max_dt_venda"]))?></div>
-                <a href="ticket.php?ticket='<?php echo $exibir["noTicket"] ?>'"><div class="col-sm-2"><?php echo $exibir["noTicket"] ?></div></a>
+                <a id="LinkTicket"href="ticket.php?ticket='<?php echo $exibir["noTicket"] ?>'"><div class="col-sm-2"><?php echo $exibir["noTicket"] ?></div></a>
        
             </div>
         <?php } ?>

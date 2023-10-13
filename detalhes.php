@@ -53,7 +53,47 @@
         }
         .buy-button:hover {
             background-color: #008749;
+       
         }
+        .comment-container {
+        background-color: #fff;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 15px;
+        box-shadow: 0px 0px 10px 0px #ccc;
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .comment-header img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .comment-details {
+        margin-left: 10px;
+    }
+
+    .comment-author {
+        font-weight: bold;
+    }
+
+    .comment-date {
+        color: #777;
+    }
+
+    .comment-content {
+        padding: 10px;
+    }
+
+    .comment-text {
+        margin-bottom: 0;
+    }
+      
     </style>
 </head>
 
@@ -61,6 +101,7 @@
     session_start();
     include 'conexao.php';    
     include 'navbar.php';
+
     ?>
     <?php
     if(!empty($_GET['cd'])){
@@ -69,6 +110,7 @@
     $consulta->closeCursor();
     $consulta->execute();
     $exibir = $consulta->fetch(PDO::FETCH_ASSOC);
+    include 'modalAvaliacao.php';
     }
 
     else {
@@ -92,11 +134,44 @@
                 <a href="carrinho.php?cd=<?php echo $cdProd; ?>">
                 <button class="btn btn-lg buy-button">Comprar</button>
                 </a>
+
+
+                <h4 style = " text-decoration: underline;" data-toggle="modal" data-target="#meuModal">Deixe uma avaliação sobre esse produto</h4>
             </div>
         </div>
     </div>
+
+    <?php  
+    
+    $consultaA = $comando->prepare("call spSelectAvali('$cdProd') ");
+   $consultaA->closeCursor();
+    $consultaA->execute();
+
+ 
+  
+    
+    ?>
+    
+
+
+
+    <?php
+    include 'comentarios.php';
+    ?>
+
+
+
+   
     <?php
     include 'rodape.html';
     ?>
+
+
+    
+</body>
+</html>
+
+
+    
 </body>
 </html>

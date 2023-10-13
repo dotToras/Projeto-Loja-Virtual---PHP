@@ -31,6 +31,7 @@
              include "navbar.php";
              include "Carrossel.php";
              include 'conexao.php';
+             
 
              //chamando a procudure
              $consulta = $comando->prepare("CALL listarProdutos()" ); 

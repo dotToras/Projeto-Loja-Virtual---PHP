@@ -63,10 +63,10 @@ include 'conexao.php';
         <button type="submit" class="btn btn-default">Pesquisar</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="carrinho.php">Carrinho</a></li>
+    
 
       
-     
+    
         <?php 
         if(empty($_SESSION['ID'])) { ?>
 
@@ -83,6 +83,7 @@ include 'conexao.php';
          ?>
   <li><a href="areaUser.php">Minhas Compras</a></li>
     <?php if($exibeUsuario['imgUsuario'] != null) {?>
+      <li><a href="carrinho.php">Carrinho</a></li>
     <li><img class="mt-6"style="border-radius:50%; margin-top:0.2vw;border:0.1vw solid black;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
     <?php } ?>
     <li><a href="editarUsuario.php?cd='<?php echo $_SESSION['ID'] ?> "><?php echo $exibeUsuario['nmUsuario'] ?></a></li>
