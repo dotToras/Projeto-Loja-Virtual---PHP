@@ -444,3 +444,68 @@ GROUP BY noTicket;
  end $$
  
   delimiter ;
+  
+  
+  -- criando tabela de Avaliação
+
+  create table tbAvaliacao(
+  
+  cdAvali int primary key auto_increment,
+  nomeAutor varchar (255) not null, -- nome de quem fez o comentário
+  dataAva date not null,
+  notaAva int not null,  
+  comentarioAva text not null,
+  cdAutor int not null,
+  cdProd int not null,
+ constraint fk_Prod foreign key (cdProd)  references tbprodutos(cdProd),
+ constraint fk_Autor foreign key (cdAutor) references tbusuario(cdUsuario)
+  
+  );
+
+  -- criando procedure para inserir avaliação
+
+  delimiter $$
+  
+  create procedure spInsertAvali(
+  _nmAutor varchar(255),
+  _dtAva date,
+  _notaAva int,
+  _cmAva text,
+  _cdAutor int,
+  cdProd int
+  )
+
+  begin
+  
+  insert into tbAvaliacao(nomeAutor, dataAva,notaAva, comentarioAva,cdAutor,cdProd)
+  values(_nmAutor,_dtAva,_notaAva,_cmAva,_cdAutor,cdProd);
+  
+  end $$
+
+  delimiter ;
+
+
+-- criando vw para mostrar comentário por autor
+ create view vwAvaliacao
+ as select nomeAutor, dataAva, notaAva, comentarioAva, cdUsuario, TP.cdProd, imgUsuario  from tbavaliacao as TA
+ Inner join TbProdutos as TP
+On TP.cdProd = TA.cdProd
+ Inner Join TbUsuario as TU
+ On TA.cdAutor = TU.cdUsuario;
+ 
+
+
+-- criando procedure para listar comentários por autor usando a vw
+
+delimiter $$
+
+
+create procedure spSelectAvali( _cdProd int)
+
+begin
+
+select * from vwAvaliacao where cdProd = _cdProd;
+
+end $$
+
+delimiter ;
