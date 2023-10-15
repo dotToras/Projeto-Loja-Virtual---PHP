@@ -30,6 +30,6 @@ $inserirAvaliacao = $comando->prepare("call spInsertAvali('$nome','$dataAtual', 
 $consultaNome->closeCursor();
 $inserirAvaliacao->execute();
 
-header('location:index.php');
+header("location:detalhes.php?cd=$cdProd");
 
 ?>
