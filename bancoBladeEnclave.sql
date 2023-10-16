@@ -509,3 +509,14 @@ select * from vwAvaliacao where cdProd = _cdProd;
 end $$
 
 delimiter ;
+
+-- criando procedure para apagar avaliações
+delimiter $$
+CREATE PROCEDURE spDeleteAvali(_Cd int)
+begin
+
+delete from tbAvaliacao where cdAvali = _Cd ;
+
+end $$
+
+delimiter ;
