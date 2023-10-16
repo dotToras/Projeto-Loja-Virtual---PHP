@@ -23,7 +23,7 @@ if ($consultaA->rowCount() > 0) {
 
                             <div class="comment-content">
 
-                            <?php if($_SESSION['Status'] == 1) { ?>
+                            <?php if($_SESSION['Status'] == 1  ) { ?>
                             <a href="deletarAvali.php?cdProd=<?php echo $cdProd ?>&cd=<?php echo $exibirA['cdAvali'] ?>"><img  style="position:absolute;margin-left:72vw;margin-top:-4vw;" width="65" height="65" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/></a>
                             <?php } ?>
                             <?php
