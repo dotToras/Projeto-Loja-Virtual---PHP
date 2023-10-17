@@ -23,7 +23,7 @@ if ($consultaA->rowCount() > 0) {
 
                             <div class="comment-content">
 
-                            <?php if($_SESSION['Status'] == 1  ) { ?>
+                            <?php if(isset($_SESSION['Status']) && $_SESSION['Status'] == 1  ) { ?>
                             <a href="deletarAvali.php?cdProd=<?php echo $cdProd ?>&cd=<?php echo $exibirA['cdAvali'] ?>"><img  style="position:absolute;margin-left:72vw;margin-top:-4vw;" width="65" height="65" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/></a>
                             <?php } ?>
                             <?php
@@ -34,6 +34,9 @@ if ($consultaA->rowCount() > 0) {
                                         echo '<img style = "margin-top:-2vw;" width="25" height="25" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
                                     } 
                                 }
+                                
+                                
+                                   
                                 ?>
                                 
                                 <p> <?php echo $exibirA['comentarioAva'] ?></p>
@@ -45,6 +48,7 @@ if ($consultaA->rowCount() > 0) {
             </div>
             <?php
         }
+        
     } else {
         // Se não há avaliações, exiba a mensagem correspondente
         ?>

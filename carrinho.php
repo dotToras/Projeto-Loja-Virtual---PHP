@@ -75,6 +75,7 @@
 		  $_SESSION['carrinho'][$cd_prod]+=1;
    
 	}
+	
 		// incluindo o arquivo 'mostraCarrinho.php'
 		include 'mostraCarrinho.php';
 		

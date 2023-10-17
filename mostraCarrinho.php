@@ -50,6 +50,7 @@
 		<div class="col-sm-2">
 			<h4 style="padding-top:20px">R$ <?php echo $preco; ?></h4>
 		</div>		
+		
 		<div class="col-sm-2" style="padding-top:20px">
 			<h4><?php echo $qnt; ?> </h4>
 		</div>

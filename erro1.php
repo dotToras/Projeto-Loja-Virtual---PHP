@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Blade Enclave - Erro de Cadastro</title>
-
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Latest compiled and minified CSS -->
@@ -22,7 +22,7 @@
     session_start();
     include 'conexao.php';
     include 'navbar.php';
-    include 'cabecalho.html';
+  
 
     ?>
 
