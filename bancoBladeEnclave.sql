@@ -520,3 +520,15 @@ delete from tbAvaliacao where cdAvali = _Cd ;
 end $$
 
 delimiter ;
+
+-- criando procedure para mostrar a média de avaliações
+delimiter $$
+create procedure spmediaAvali(_Cd int)
+
+begin
+
+SELECT AVG(notaAva) AS media_notas  FROM tbAvaliacao where cdProd = _Cd;
+
+end $$ 
+
+delimiter ; 
