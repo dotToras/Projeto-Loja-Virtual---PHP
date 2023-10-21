@@ -119,10 +119,10 @@ Inner join tbCategoria
 where tbProdutos.cdCategoria = tbCategoria.cdCategoria;
  
 -- criando usuario e senha
- create user 'blade'@'localhost' identified with mysql_native_password by  '12345678';
+ create user 'bladeEn'@'localhost' identified with mysql_native_password by  '12345678';
  
  -- dando privilegios ao usuario criado
- grant all privileges on dbBlade. * to 'blade'@'localhost' with grant option;
+ grant all privileges on dbBlade. * to 'bladeEn'@'localhost' with grant option;
  
  delimiter //
  
@@ -172,7 +172,7 @@ begin
 	select  cdProd,nmProd,vlProd,ImgProd, qtEstoque from vwProdDetalhes where dsCategoria = vdsCategoria;
  
  end &&
- 
+  delimiter ;
  -- Criando tabela de usuário
  
  create table tbUsuario(
@@ -186,7 +186,7 @@ begin
  dsCidade varchar(30)  not null,
  noCep char(9) not null,
 imgUsuario varchar(255)
- ) default charset utf8;
+ ) ;
 
  -- inserindo usuario
  insert into tbUsuario( nmUsuario, dsEmail,dsSenha,  dsStatus,  dsEndereco ,dsCidade, noCep    )
@@ -283,12 +283,12 @@ delimiter;
  -- criando procedure para listar produto buscado
  
  delimiter %%
- 
+
  create procedure spListaBuscado(VnmProd varchar(70))
 
  begin
  
- select cdProd, ImgProd, nmProd, vlProd from tbProdutos where nmProd like concat ("%",'a', "%" );
+ select cdProd, ImgProd, nmProd, vlProd from tbProdutos where nmProd like concat ("%",VnmProd, "%" );
  
  end %%
  
