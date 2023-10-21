@@ -21,7 +21,9 @@
 	.navbar{
 		margin-bottom: 0;
 	}
-	
+	#rowBusca{
+	   width:100%;
+	}
 	
 	</style>
 	
@@ -59,16 +61,43 @@
 	
 <div class="container-fluid">
 	
-<?php while($exibir = $consulta->fetch(PDO::FETCH_ASSOC)){	?>
+<?php while($exibir = $consulta->fetch(PDO::FETCH_ASSOC)){	
+	  
+	  $cd =  $exibir["cdProd"];
+	  $consultaMedia = $comando->prepare("call spmediaAvali('$cd')");
+			   
+				
+			   
+	  $consultaMedia->closeCursor();
+	  $consultaMedia->execute();
+	  $exibirMedia = $consultaMedia->fetch(PDO::FETCH_ASSOC);
+	  $mediaNota = $exibirMedia['media_notas']; ?>
 	
-	<div class="row" style="margin-top: 15px;">
+	<div id="rowBusca"class="row" style="margin-top: 15px;">
 		
 		<div class="col-sm-1 col-sm-offset-1"><img src="Imagens/<?php echo $exibir['ImgProd'] ?>" class="img-responsive"></div>
-		<div class="col-sm-5"><h4 style="padding-top:20px"><?php echo $exibir['nmProd'] ?></h4></div>
+		<div class="col-sm-3"><h4 style="padding-top:20px"><?php echo $exibir['nmProd'] ?></h4></div>
+
+		<div class="col-sm-2 " style="padding-top:20px">
+		<?php
+      
+      for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <=  $mediaNota ) {
+                                        echo '<img style = " "width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    } 
+
+                                    if($mediaNota == null)
+                                    {
+                                      $mediaNota = 5;
+                                      echo '<img style = " width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    }
+                                }
+                                ?>
+				</div>			
 		<div class="col-sm-2"><h4 style="padding-top:20px">R$ <?php echo $exibir['vlProd'] ?></h4></div>
 		<div class="col-sm-2 col-xs-offset-right-1">
 				
-        <button class="btn btn-lg btn-block btn-info ">
+        <button class="btn btn-lg btn-block btn-info " style="margin-top:18px">
                         <a href="detalhes.php?cd=<?php echo $exibir["cdProd"]; ?>"><span class="glyphicon glyphicon-usd"> DETALHES</span></a>
         </button>
 		
@@ -86,11 +115,7 @@
 }	?>
 
 
-	<?php
-	
-	include 'rodape.html';
-	
-	?>
+
 	
 </body>
 </html>

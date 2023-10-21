@@ -3,12 +3,13 @@
 
 
 .profile-avatar {
-    width: 30vw; /* Adjust the size as needed */
-    height: 30vw; /* Adjust the size as needed */
+    width: 10vw; /* Adjust the size as needed */
+    height: 10vw; /* Adjust the size as needed */
     border-radius: 50%; /* Makes it circular */
-    border: 0.1vw solid #2b1111; /* Add a white border for a clean look */
+    border: 0.1vw solid #b9a91a; /* Add a white border for a clean look */
     display: block; /* Center horizontally */
     margin: 0 auto; /* Center horizontally */
+    
 }
 
 *{

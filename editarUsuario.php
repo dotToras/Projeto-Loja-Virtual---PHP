@@ -16,9 +16,28 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
+    <style>
+    #containerPerfil
+
+    {
+        margin-top: 4vw;
+    width:100% !important;
+    
+    }
+
+    .profile-avatar {
+    width: 15vw; /* Adjust the size as needed */
+    height: 15vw; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes it circular */
+    border: 0.1vw solid #2b1111; /* Add a white border for a clean look */
+    display: block; /* Center horizontally */
+    margin: 0 auto; /* Center horizontally */
+}
+
+        </style>
 </head>
 
-<body>	
+<body style="overflow-x: hidden !important ;">	
 	
 <?php
 	
@@ -42,9 +61,11 @@
    $consulta->closeCursor();
    $consulta->execute();
    $exibir = $consulta->fetch(PDO::FETCH_ASSOC);
+
+   include 'sidebar.php';
     ?>
 
-<div class="container mt-5">
+<div id="containerPerfil" class="container mt-5">
         <h1>Editar Usuário</h1>
         <form action="AtualizarUsuario.php" method="POST" enctype="multipart/form-data">
              <!-- Campo Imagem do Usuário -->
@@ -55,7 +76,7 @@
 
             <div class="form-group">
 						
-					<img class="profile-avatar " src="Imagens - Usuario/<?php echo $exibir['imgUsuario']; ?>" >
+					<img class="profile-avatar" src="Imagens - Usuario/<?php echo $exibir['imgUsuario']; ?>" >
 						
 					</div>
             <!-- Campo Nome do Usuário -->
@@ -89,12 +110,11 @@
         </form>
     </div>
 
+    </div>
+		</div>
 
-	<?php
-	
-	include 'rodape.html';
-	
-	?>
-	
+        </div>
+		</div>
+
 </body>
 </html>

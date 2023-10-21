@@ -27,7 +27,6 @@
           //Includes
 
              include "navbar.php";
-             include "cabecalho.html";
              include 'conexao.php';
 
              $cat = $_GET['cat']; // Recebendo a categoria atráves da navbar.php, essa será passada para a procedure como parametro
@@ -42,15 +41,40 @@
 
               <!-- Laço de repetição para exibir todos os produtos cadastrados -->
 
-              <?php   while ($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) {  ?>
+              <?php   while ($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) { 
+                  $cd =  $exibe["cdProd"];
+                  $consultaMedia = $comando->prepare("call spmediaAvali('$cd')");
+                           
+                            
+                           
+                  $consultaMedia->closeCursor();
+                  $consultaMedia->execute();
+                  $exibirMedia = $consultaMedia->fetch(PDO::FETCH_ASSOC);
+                  $mediaNota = $exibirMedia['media_notas']; ?>
 
               <div class="col-sm-4">
 
                     <img src="Imagens/<?php  echo $exibe['ImgProd']?>" class="img-responsive">
                     <div><h1><?php  echo mb_strimwidth( $exibe['nmProd'],0,30,'...' ); ?></h1></div> <!-- Utilizndo mb_strimwidth para limitar o númer de caracteres -->
+
+                    <?php
+      
+      for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <=  $mediaNota ) {
+                                        echo '<img style = " width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    } 
+
+                                    if($mediaNota == null)
+                                    {
+                                      $mediaNota = 5;
+                                      echo '<img style = " width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    }
+                                }
+                                ?>
+
                   <hr>
                     <div><h4>R$<?php  echo number_format($exibe['vlProd'] ,2,',','.'); ?></h4></div> <!-- Utilizando number-format para formatar o valor recebido no formato numérico -->
-
+                    <hr>
                     <div class="text-center">
 
                     <button class="btn btn-lg btn-block btn-info ">
@@ -67,7 +91,7 @@
 
                         <?php  } else{?> <!-- Se não, exibir botão de indisponivel -->
 
-                        <button class="btn btn-lg btn-block btn-danger">
+                        <button class="btn btn-lg btn-block btn-danger" disabled>
                         <span class="glyphicon glyphicon-remove-circle"> INDISPONIVEL</span>
                         </button>
 

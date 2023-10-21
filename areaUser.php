@@ -7,56 +7,92 @@
     <link rel="stylesheet" href="style.css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery livraria -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!-- JavaScript compilado-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Estilos personalizados -->
     <style>
-        .navbar {
-            background-color: #333;
-            margin-bottom: 0;
-        }
-        
-      
-        .row-header {
-            margin-top: 15px;
-            font-weight: bold;
-            background-color: #8B0000;
-            color: #fff;
-            padding: 10px;
-        }
+     /* Estilos para barras de navegação */
+.navbar {
+    background-color: #333;
+    margin-bottom: 0;
+}
 
-        .row-data {
-            margin-top: 10px;
-            background-color: #fff;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
+/* Estilos para cabeçalho (row-header) */
+.row-header {
+    margin-top: 3%;
+    font-weight: bold;
+    background-color: #8B0000;
+    color: #fff;
+    padding: 1rem;
+}
 
-        .btn-custom {
-            background-color: #337ab7;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+/* Estilos para conteúdo (row-data) */
+.row-data {
+    margin-top: 2%;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 
-        .btn-custom:hover {
-            background-color: #23527c;
-        }
+/* Estilos para botões personalizados (btn-custom) */
+.btn-custom {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-        .glyphicon {
-            margin-right: 5px;
-        }
-        #LinkTicket{
-            color:black;
-        }
-        #LinkTicket:hover{
-            color:grey;
-        }
+.btn-custom:hover {
+    background-color: #23527c;
+}
+
+/* Espaçamento para ícones */
+.glyphicon {
+    margin-right: 5px;
+}
+
+/* Estilos para links */
+#LinkTicket {
+    color: black;
+}
+
+#LinkTicket:hover {
+    color: grey;
+}
+
+#containerCompras{
+ margin-top: 4vw;
+    width:100% !important;
+    flex-wrap: wrap;
+}
+/* Media query para ajustar estilos em telas menores */
+@media (max-width: 768px) {
+    .row-header {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .row-data {
+        margin-top: 1%;
+        padding: 0.5rem;
+    }
+
+    .btn-custom {
+        padding: 0.5rem 1rem;
+    }
+}
+
     </style>
 </head>
 <body>
+
+
 <?php
 session_start();
 
@@ -72,9 +108,9 @@ $cd = $_SESSION['ID'];
 $consultaVenda = $comando->prepare("call spListaVendas('$cd') ");
 $consultaVenda->closeCursor();
 $consultaVenda->execute();
-
+include 'sidebar.php';	
 ?>
-<div class="container">
+<div  id ="containerCompras"class="container">
 
     <div class="row mt-15">
         <h1 class="text-center">Minhas Compras</h1>
@@ -95,8 +131,8 @@ $consultaVenda->execute();
         <?php } ?>
     </div>
 </div>
-<?php
-include 'rodape.html';
-?>
+</div>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery livraria -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!-- JavaScript compilado-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Estilos personalizados -->
     <style>
         
@@ -28,19 +32,23 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-
+        #containerCompras{
+ margin-top: 4vw;
+flex-wrap: wrap;
+    width:100% !important;
+}
         
     </style>
 </head>
 <body>
 <?php
 session_start();
+include 'navbar.php';
 
 if (empty($_SESSION['ID'])) {
     header("location: formlogon.php");
 }
 include 'conexao.php';
-include 'navbar.php';
 
 
 $ticket = $_GET['ticket'];
@@ -49,8 +57,10 @@ $consultaVenda = $comando->prepare("call spListarVendasUsu($ticket)");
 $consultaVenda->closeCursor();
 $consultaVenda->execute();
 $total = 0;
+
+include 'sidebar.php';	
 ?>
-<div class="container">
+<div  id="containerCompras"class="container">
 
     <div class="row mt-15">
         <h1 class="text-center">Compra :<?php echo $ticket ?></h1>
@@ -88,8 +98,7 @@ $total = 0;
 
     </div>
 </div>
-<?php
-include 'rodape.html';
-?>
+</div>
+</div>
 </body>
 </html>

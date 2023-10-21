@@ -5,19 +5,34 @@
     box-shadow: 0 0.3vw #550000; /* Sombra escura abaixo da navbar */
     border-radius: 0;
 }
+/* Estilo para o campo de pesquisa responsivo */
+.navbar-form .form-control {
+    width: 100%; /* Ocupar toda a largura disponível */
+    max-width: 250px; /* Defina um tamanho máximo para evitar que ele se expanda demais */
+
+}
 
 /* Define a cor do texto da navbar para preto */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav > li > a {
-    color: #000; /* Fonte preta */
+    color: #fff; /* Fonte preta */
 }
-
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav > li > a:hover {
+    color: #b9a91a; /* Fonte preta */
+}
 /* Define a cor das barras do botão de navegação quando em modo de colapso */
 .navbar-custom .navbar-toggle .icon-bar {
-    background-color: #000;
+    background-color: #b9a91a;
 }
 .navbar-custom .dropdown-menu {
     z-index: 1000;
+}
+/* Media query para ajustar o campo de pesquisa em telas menores */
+@media (max-width: 768px) {
+    .navbar-form .form-control {
+        max-width: 100%; /* Em telas menores, permita que ele ocupe toda a largura disponível */
+    }
 }
 
 </style>
@@ -37,7 +52,7 @@ include 'conexao.php';
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Blade Enclave</a>
+      <a class="navbar-brand" href="index.php">Blade Enclave</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -81,9 +96,9 @@ include 'conexao.php';
           $consultaUsuario->execute();
           $exibeUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
          ?>
-  <li><a href="areaUser.php">Minhas Compras</a></li>
+  
     <?php if($exibeUsuario['imgUsuario'] != null) {?>
-      <li><a href="carrinho.php">Carrinho</a></li>
+
     <li><img class="mt-6"style="border-radius:50%; margin-top:0.2vw;border:0.1vw solid black;" src="Imagens - Usuario/<?php echo $exibeUsuario['imgUsuario'] ?>" alt="Avatar" width="45" height="42" > </li>
     <?php } ?>
     <li><a href="editarUsuario.php?cd='<?php echo $_SESSION['ID'] ?> "><?php echo $exibeUsuario['nmUsuario'] ?></a></li>

@@ -110,6 +110,17 @@
     $consulta->closeCursor();
     $consulta->execute();
     $exibir = $consulta->fetch(PDO::FETCH_ASSOC);
+
+    // exibir média avaliações
+
+    $consultaMedia = $comando->prepare("call spmediaAvali('$cdProd')");
+           
+            
+           
+    $consultaMedia->closeCursor();
+    $consultaMedia->execute();
+    $exibirMedia = $consultaMedia->fetch(PDO::FETCH_ASSOC);
+    $mediaNota = $exibirMedia['media_notas']; 
     include 'modalAvaliacao.php';
     }
 
@@ -128,13 +139,38 @@
             </div>
             <div class="col-sm-7">
                 <h1 class="product-title"><?php echo $exibir['nmProd'] ?></h1>
+                <?php
+      
+                         for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <=  $mediaNota ) {
+                                        echo '<img style = " width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    } 
+
+                                    if($mediaNota == null)
+                                    {
+                                      $mediaNota = 5;
+                                      echo '<img style = " width="35" height="35" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1"/>';
+                                    }
+                                }
+                                ?>
                 <p class="product-description"><?php echo $exibir['ResumoProd'] ?></p>
                 <p class="product-category"><?php echo $exibir['dsCategoria'] ?></p>
                 <p class="product-price">R$ <?php echo $exibir['vlProd'] ?></p>
-                <a href="carrinho.php?cd=<?php echo $cdProd; ?>">
-                <button class="btn btn-lg buy-button">Comprar</button>
-                </a>
+              
+   <?php if($exibir['qtEstoque'] > 0){?> <!-- If para verificar se existe quantidade de estoque e então exibir botão de compra -->
 
+              <button class="btn btn-lg btn-success">
+             <a href="carrinho.php?cd=<?php echo $exibir["cdProd"]; ?>">
+             <span class="glyphicon glyphicon-info-sign">  COMPRAR</span></a>
+            </button>
+
+            <?php  } else{?> <!-- Se não, exibir botão de indisponivel -->
+
+            <button class="btn btn-lg  btn-danger" disabled>
+            <span class="glyphicon glyphicon-remove-circle"> INDISPONIVEL</span>
+            </button>
+
+            <?php   }  ?>
 
                 <h4 style = " text-decoration: underline;" data-toggle="modal" data-target="#meuModal">Deixe uma avaliação sobre esse produto</h4>
             </div>
