@@ -39,7 +39,7 @@ if ($consultaA->rowCount() > 0) {
                                    
                                 ?>
                                 
-                                <p style="text-wrap: center; "> <?php echo $exibirA['comentarioAva'] ?></p>
+                                <p style="text-wrap: center; width: 10%;"> <?php echo $exibirA['comentarioAva'] ?></p>
                               
                             </div>
                         </div>
