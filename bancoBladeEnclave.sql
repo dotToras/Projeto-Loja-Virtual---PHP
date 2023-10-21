@@ -184,16 +184,16 @@ begin
  dsStatus boolean not null,
  dsEndereco varchar(80) not null,
  dsCidade varchar(30)  not null,
- noCep char(9) not null
-
+ noCep char(9) not null,
+imgUsuario varchar(255)
  ) default charset utf8;
 
  -- inserindo usuario
- insert into tbUsuario()
- values(default,"Xibison", "xibison@gmail.com", "123", 1,"R. das Gaivotas", "Rio Branco, AC", "35637-909");
+ insert into tbUsuario( nmUsuario, dsEmail,dsSenha,  dsStatus,  dsEndereco ,dsCidade, noCep    )
+ values("Xibison", "xibison@gmail.com", "123", 1,"R. das Gaivotas", "Rio Branco, AC", "35637-909");
  
-  insert into tbUsuario()
- values(default,"Joabcledson", "Joabcledson@gmail.com", "123", 0,"R. Anapa", "Xique Xique, BA", "56890-321");
+  insert into tbUsuario(nmUsuario, dsEmail,dsSenha,  dsStatus,  dsEndereco ,dsCidade, noCep  )
+ values("Joabcledson", "Joabcledson@gmail.com", "123", 0,"R. Anapa", "Xique Xique, BA", "56890-321");
  
  -- criando procedure para verificar Usuario
  
