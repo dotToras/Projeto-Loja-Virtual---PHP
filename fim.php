@@ -53,6 +53,7 @@
 		</div>
 	</div>
 	
+	<?php echo "<h3 class='text-center'> <a  href='$linkPagamento' ' target='_blank'>Clique aqui para imprimir seu boleto</a></h3>";?>
 	<?php include 'rodape.html' ?>
 	
 	

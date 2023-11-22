@@ -47,7 +47,7 @@
 	include 'conexao.php';	// incluindo arquivo de conexão
 	include 'navbar.php'; // incluindo arquivo barra de navegação
 	
-	
+
 	// verificando se o codigo do produto NÃO está vazio
 	if (!empty($_GET['cd'])) {
 	
@@ -86,7 +86,7 @@
 		
 		
 	}	
-	
+	$_SESSION['total'] = $total;
 	?>
 	
 	<!-- exibindo o valor da variavel total da compra -->
@@ -98,7 +98,7 @@
 	<div class="row text-center" style="margin-top: 15px;">
 		<a href="index.php"><button class="btn btn-lg btn-primary">Continuar Comprando</button></a>
         <?php if(count($_SESSION['carrinho'])  > 0 ) {  ?>
-		<a href="finalizarCompra.php"><button class="btn btn-lg btn-success">Finalizar Compra</button></a>
+		<a href="checkout.php"> <button class="btn btn-lg btn-success">Finalizar Compra</button></a>
         <?php }  ?>
 	</div>
 

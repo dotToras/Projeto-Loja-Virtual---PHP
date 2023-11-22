@@ -6,6 +6,7 @@ session_start();
 
 include 'conexao.php';
 
+$linkPagamento = $_GET['linkPagamento'];
 
 $data = date('Y-m-d');  // variavel que vai pegar a data do dia (ano mes dia -padrão do mysql)
 $ticket = uniqid();  // gerando um ticket com função uniqid(); 	gera um id unico    
@@ -22,8 +23,10 @@ foreach ($_SESSION['carrinho'] as $cd => $qnt)  {
 	
     $inserir->execute();
 }
+ 
 
 include 'fim.php';
 
 
 ?>
+
